@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">tresEnRaya</string>
+    <string name="title_activity_instrucciones">instrucciones</string>
+    <string name="instrucciones">El objetivo del juego consiste, por un lado, en lograr alinear las tres fichas formando una raya horizontal, vertical o diagonal y por otro, tratar de entorpecer los movimientos del contrario para evitar que consiga alinear sus fichas antes.</string>
+</resources>

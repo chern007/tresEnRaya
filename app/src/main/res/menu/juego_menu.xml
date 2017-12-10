@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mnNuevo"
+        android:title="Nuevo Juego"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mnConfigurar"
+        android:title="Configurar Juego"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mnInstrucciones"
+        android:title="Instrucciones"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mnHome"
+        android:icon="@android:drawable/ic_media_rew"
+        android:title="Home"
+        app:showAsAction="always" />
+</menu>
