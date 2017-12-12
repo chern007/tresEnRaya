@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.carlos.tresenraya.juego">
+
+
+    <TextView
+        android:id="@+id/txtElige"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:gravity="fill_vertical"
+        android:text="Elige el número de jugadores:"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/dialogoOK"
+        android:text="Guardar Configuracion"
+        app:layout_constraintLeft_toLeftOf="@+id/radioGroup"
+        app:layout_constraintRight_toRightOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="360dp"
+        android:layout_height="44dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="@+id/txtElige"
+        app:layout_constraintRight_toRightOf="@+id/txtElige"
+        app:layout_constraintTop_toBottomOf="@+id/txtElige">
+
+        <RadioButton
+            android:id="@+id/btUnJugador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Un jugador" />
+
+        <RadioButton
+            android:id="@+id/btDosJugadores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Dos jugadores" />
+
+    </RadioGroup>
+
+</android.support.constraint.ConstraintLayout>

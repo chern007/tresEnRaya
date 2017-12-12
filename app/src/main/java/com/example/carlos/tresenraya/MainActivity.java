@@ -1,16 +1,14 @@
 package com.example.carlos.tresenraya;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         } else if (opcion == R.id.mnConfigurar) {
 
             Toast.makeText(getApplicationContext(), "Configura tu partida.", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this, configuracion.class));
+            //startActivity(new Intent(this, configuracion.class));
+            openConfiguracion();
 
         } else if (opcion == R.id.mnHome) {
 
@@ -63,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //metodo que muestra un dialogo en el que "infla" dialogo_instru.xml
     public void openInstrucciones() {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        View mView = getLayoutInflater().inflate(R.layout.dialogo_config,null);
+        View mView = getLayoutInflater().inflate(R.layout.dialogo_instru, null);
         Button botonOK = (Button) mView.findViewById(R.id.dialog_ok);
         mBuilder.setView(mView);
         final AlertDialog dialogo = mBuilder.create();
@@ -74,15 +74,38 @@ public class MainActivity extends AppCompatActivity {
         botonOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               dialogo.hide();
+                dialogo.hide();
+            }
+        });
+    }
+
+    public void openConfiguracion() {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.dialogo_confg, null);
+        Button botonSAVE = (Button) mView.findViewById(R.id.btGuardar);
+        mBuilder.setView(mView);
+        final AlertDialog dialogo2 = mBuilder.create();
+        dialogo2.show();
+
+        botonSAVE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                RadioButton opt2 = (RadioButton) dialogo2.findViewById(R.id.btDosJugadores);
+
+                //configuramos la variable para ver si jugamos en modo multijugador o contra la maquina
+                if (opt2.isChecked()){
+                    logica_juego.multijuador = true;
+                }else {
+                    logica_juego.multijuador = false;
+                }
+
+                dialogo2.hide();//cerramos el dialogo de configuracion
             }
         });
 
-
-
-
-
     }
+
 
 
 

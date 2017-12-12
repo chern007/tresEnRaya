@@ -28,6 +28,10 @@ public class juego extends MainActivity {
 
     private Drawable fondoBotones;
     public TextView pantallaInfo;
+    
+    private IA inteligenciaArtificial = new IA();
+    
+    
 
 
     @Override
@@ -70,12 +74,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -117,12 +122,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -158,12 +164,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -204,12 +211,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -250,12 +258,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -296,12 +305,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -342,12 +352,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -388,12 +399,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
@@ -434,12 +446,13 @@ public class juego extends MainActivity {
 
                     logica_juego.turnoUsuario = 2;//pasamos al turno del siguiente usuario
 
-                    if (configuracion.multijuador) {
+                    if (logica_juego.multijuador) {
 
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
-                        int casillaIA = logica_juego.movimientoMaquina();
+                        //int casillaIA = logica_juego.movimientoMaquinaIA();
+                        int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);

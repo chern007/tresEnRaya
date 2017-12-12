@@ -17,6 +17,7 @@ public class logica_juego extends Activity {
 
     public static int turnoUsuario = 1;
 
+    public static boolean multijuador = true;
 
     //funcion que comprobara si ha ganado el ususario en curso
     public static boolean hasGanado(int[] tablero, int valorUsuario) {
@@ -62,7 +63,7 @@ public class logica_juego extends Activity {
     }
 
 
-    public static int movimientoMaquina (){
+    public static int movimientoMaquinaRandom (){
         int casillaElegida;
 
         do {
@@ -72,5 +73,20 @@ public class logica_juego extends Activity {
 
     return casillaElegida;
     }
+
+    public static int movimientoMaquinaIA (){
+
+        final int[][] combinacionesGanadoras = {{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
+
+        int casillaElegida;
+
+        do {
+            casillaElegida = new Random().nextInt(9);
+
+        }while(tablero[casillaElegida]== 1 || tablero[casillaElegida]== 2);
+
+        return casillaElegida;
+    }
+
 
 }
