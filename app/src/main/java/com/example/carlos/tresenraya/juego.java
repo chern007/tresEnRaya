@@ -24,8 +24,8 @@ public class juego extends MainActivity {
     public TextView pantallaInfo;
     
     private IA inteligenciaArtificial = new IA();
-    
-    
+
+    long TInicio, TFin, tiempo;
 
 
     @Override
@@ -74,9 +74,12 @@ public class juego extends MainActivity {
                     } else {
 
                         pantallaInfo.setText("PENSANDO...");
+
+//                        TInicio = System.currentTimeMillis();
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
-
+//                        TFin = System.currentTimeMillis();
+//                        tiempo = TFin - TInicio;
 
                         TODOSBOTONES[casillaIA].setBackgroundResource(R.drawable.crucecita);
                         logica_juego.tablero[casillaIA] = 2;

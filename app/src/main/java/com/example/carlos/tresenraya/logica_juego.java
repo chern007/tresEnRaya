@@ -14,7 +14,7 @@ public class logica_juego extends Activity {
 
     public static int turnoUsuario = 1;
 
-    public static boolean multijuador = true;
+    public static boolean multijuador = false;
 
     //funcion que comprobara si ha ganado el ususario en curso
     public static boolean hasGanado(int[] tablero, int valorUsuario) {
