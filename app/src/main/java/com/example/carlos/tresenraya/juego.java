@@ -1,17 +1,11 @@
 package com.example.carlos.tresenraya;
 
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class juego extends MainActivity {
 
@@ -79,6 +73,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -89,6 +84,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
 
@@ -127,6 +123,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -137,6 +134,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -169,6 +167,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -179,6 +178,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -216,6 +216,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -226,6 +227,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -263,6 +265,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -273,6 +276,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -310,6 +314,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -320,6 +325,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -357,6 +363,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -367,6 +374,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -404,6 +412,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -414,6 +423,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -451,6 +461,7 @@ public class juego extends MainActivity {
                         pantallaInfo.setText("TURNO DEL JUGADOR 2 (X)");
                     } else {
 
+                        pantallaInfo.setText("PENSANDO...");
                         //int casillaIA = logica_juego.movimientoMaquinaIA();
                         int casillaIA = inteligenciaArtificial.movimiento(logica_juego.tablero);
 
@@ -461,6 +472,7 @@ public class juego extends MainActivity {
                         if (compruebaGandor()) {
                             return;
                         }
+                        pantallaInfo.setText("TURNO DEL JUGADOR 1 (O)");
                         logica_juego.turnoUsuario = 1;//pasamos al turno del siguiente usuario
                     }
                 } else {
@@ -485,6 +497,10 @@ public class juego extends MainActivity {
 
         Toast.makeText(getApplicationContext(),"Juego reseteado.", Toast.LENGTH_LONG).show();
 
+        //reseteamos el tablero
+        logica_juego.tablero[0] = logica_juego.tablero[1] = logica_juego.tablero[2] = logica_juego.tablero[3] = logica_juego.tablero[4] = logica_juego.tablero[5] = logica_juego.tablero[6] = logica_juego.tablero[7] = logica_juego.tablero[8] = 0;
+
+        //ponemos el turno inicial como turno del jugador 1
         logica_juego.turnoUsuario = 1;
 
         //restauramos el fondo inicial de los botones para volver a jugar
