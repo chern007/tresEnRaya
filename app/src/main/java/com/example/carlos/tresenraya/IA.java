@@ -4,44 +4,53 @@ package com.example.carlos.tresenraya;
  * Created by Carlos on 11/12/2017.
  */
 
-
+//algoritmo recursivo MINMAX
 
 public class IA {
 
     public static int tiradas = 0;
 
-    /*Árboles para los movimientos del Triqui.*/
+    //objeto nodo con la info des estado actual del tablero para cada "nodo actual"
     class Casilla {
 
-        /*Mejor movimiento.*/
+        //tablero del nodo actual
+        public int[] tablero;
+
+        //nodos hijos
+        Casilla[] nodos;
+
+        //mejor casilla para marcar
         int mejorMovimiento;
-        /*Nodos hijos.*/
-        Casilla nodos[];
-        /*Tablero del juego.*/
-        public int tablero[];
-        /*Turno de la computadora.*/
-        boolean miTurno = false;
-        /*Indice de la pocision.*/
-        int indice;
-        /*Ganador.*/
+
+        //guardaremos el numero del jugador que gana
         int ganador = 0;
 
-        /*Constructor.*/
+        //estado del turno de la máquia
+        boolean miTurno = false;
+
+        //indice de la posicion (0-8)
+        int indice;
+
+
+        //constructor
         Casilla() {
 
-            /*Inicializamos las variables.*/
+            //iniciamos el array de int que forman el tablero
             tablero = new int[9];
 
         }
     }
-    /*Raíz del árbol*/
+
+    //nodo INICIAL del arbol
     Casilla arbol = new Casilla();
-    /*Atributos.*/
+
+    //tablero INICIAL
     int[] tablero;
-    /*Mi ficha.*/
+
+    //ficha jugador
     public final int miFICHA = 2;
 
-    /*Método que nos devuelve los espacios disponibles.*/
+    //metodo que retorna el numero de casillas sin marcar
     public int movDisponibles(int[] tablero) {
         int mov = 0;
 
@@ -54,13 +63,13 @@ public class IA {
         return mov;
     }
 
-    /*Método que nos devuelve los indices del tablero de las pocisiones vacías.*/
+    //Método que nos devuelve un array con las posiciones del tablero que no estan marcadas
     public int[] posVacias(int[] tablero) {
-        /*Creamos el vector con los índices.*/
+        //iniciamos el array de indices del tablero
         int[] indices = new int[movDisponibles(tablero)];
         int indice = 0;
 
-        /*Recorremos y guardamos los indices.*/
+        //recorremos y guardamos los indices que no están marcados con 1 o 2
         for (int i = 0; i < 9; i++) {
             if (tablero[i] == 0) {
                 indices[indice] = i;
@@ -70,40 +79,40 @@ public class IA {
         return indices;
     }
 
-    /*Metodo que recibe el tablero actual.*/
+    //METODO PRINCIPAL QUE NOS DEVOLVERA PA POSICION OPTIMA
     public int movimiento(int[] tablero) {
-        /*Asignamos el tablero.*/
+        //asignamos el tablero
         this.tablero = tablero;
         tiradas++;
 
-        /*Copiamos el tablero a nuestro nodo raíz.*/
+        //asignamos los valores del indice de tablero del nodo INICIAL
         for (int i = 0; i < 9; i++) {
             this.arbol.tablero[i] = this.tablero[i];
         }
 
-        /*Calcular el mejor movimiento del árbol, desde las hojas hasta la raiz.*/
+        //llamamos al metodo recursivo que calcula la mejor posicion
         movComputadora(arbol);
 
-        /*Devuelve el mejor movimiento.*/
+        //devolvemos la mejor posicion
         return arbol.mejorMovimiento;
     }
 
     //metodo recursivo, generará tantos nodos hijo por cada nodo padre como movimientos disponibles haya
-    public void movComputadora(Casilla raiz) {
+    public void movComputadora(Casilla actual) {
 
         //calculamos el numero de movimientos que podemos realizar
-        int movimientos = movDisponibles(raiz.tablero);
+        int movimientos = movDisponibles(actual.tablero);
         //hallamos las posiciones donde se presenta el valor 0 (celda vacia)
-        int indices[] = posVacias(raiz.tablero);
+        int[] indices = posVacias(actual.tablero);
         int Max, Min;
 
 
         //creamos un nodo hijo por cada posible movimiento y lo metemos en el atributo nodo del nodo padre
         //mas abajo los inicializaremos si no hay ganadores
-        raiz.nodos = new Casilla[movimientos];
+        actual.nodos = new Casilla[movimientos];
 
         //comprobamos si en esta iteracion hay ya ganador
-        int ganador = terminado(raiz.tablero);
+        int ganador = terminado(actual.tablero);
         if (ganador == 1) {
             ganador = -1;
         } else if (ganador == 2) {
@@ -112,99 +121,97 @@ public class IA {
 
         //vemos si hemos llegado a la ultima iteracion y comprobamos si hay ganador
         if (ganador != 0 || movimientos == 0) {
-            raiz.ganador = ganador;
+            actual.ganador = ganador;
 
             //en el caso de que no estemos en caso de empate y no haya ganador aun
         } else {
 
-            /*Crea los datos de cada hijo.*/
+            //bucle para asignar las propiedades de cada nodo hijo
             for (int i = 0; i < movimientos; i++) {
 
-                /*Inicializa los nodos hijos del árbol.*/
-                raiz.nodos[i] = new Casilla();
+                //inicializamos los nodos hijos
+                actual.nodos[i] = new Casilla();
 
                 //le pasamos el tablero al nuevo nodo hijo (uno por cada hijo)
                 for (int j = 0; j < 9; j++) {
-                    raiz.nodos[i].tablero[j] = raiz.tablero[j];
+                    actual.nodos[i].tablero[j] = actual.tablero[j];
                 }
 
                 //por cada nodo probamos una posicion => SON LAS DIFERENTES OPCIONES QUE EXISTEN
-                if (raiz.miTurno) {
-                    raiz.nodos[i].tablero[indices[i]] = 1;// ficha (O)
+                if (actual.miTurno) {
+                    actual.nodos[i].tablero[indices[i]] = 1;// ficha (O) JUGADOR
                 } else {
-                    raiz.nodos[i].tablero[indices[i]] = 2;// ficha (X)
+                    actual.nodos[i].tablero[indices[i]] = 2;// ficha (X) MAQUINA
                 }
 
                 //cambiamos de turno en los nodos hijos
-                raiz.nodos[i].miTurno = !raiz.miTurno;
+                actual.nodos[i].miTurno = !actual.miTurno;
 
 
                 //guarda la casilla que ha marcado este jugador
-                raiz.nodos[i].indice = indices[i];
+                actual.nodos[i].indice = indices[i];
 
-                //Volvemos a llamar a la misma funcion para que examine los hijos del hijo
-                movComputadora(raiz.nodos[i]);
+                //Volvemos a llamar a la misma funcion para que examine los hijos del hijo (bajamos un nivel del arbol)
+                movComputadora(actual.nodos[i]);
 
             }
 
-            /*Minimax*/
-            if (!raiz.miTurno) {
-                raiz.ganador = Max(raiz);
+            //calculamos el minimo y el maximo de cada escenario alternando los jugadores
+            if (!actual.miTurno) {
+                actual.ganador = Max(actual);//maquina
             } else {
-                raiz.ganador = Min(raiz);
+                actual.ganador = Min(actual);//jugador
             }
 
         }
 
     }
 
-    /*Método que calcula el MÁXIMO de los nodos hijos de MIN*/
-    public int Max(Casilla raiz) {
-        int Max = -111;
-        /*Máximo para la computadora, buscamos el valor donde gane.*/
-        for (int i = 0; i < raiz.nodos.length; i++) {
-            /*Preguntamos por un nodo con un valor alto MAX*/
-            if (raiz.nodos[i].ganador > Max) {
-                /*Lo asignamos y pasamos el mejor movimiento a la raíz.*/
-                Max = raiz.nodos[i].ganador;
-                raiz.mejorMovimiento = raiz.nodos[i].indice;
-                /*Terminamos de buscar.*/
-                if (Max == 1) {
+    //metodo para calcular el maximo que recogen los nodo hijos del nodo padre
+    public int Max(Casilla actual) {
+        int MAX = -111;
+        //buscamos la puntuacion maxima para el jugador 2 (la máquina)
+        for (int i = 0; i < actual.nodos.length; i++) {
+            //vemos si mejora al maximo de la iteracion anterior
+            if (actual.nodos[i].ganador > MAX) {
+                //guardamos la mejor casilla para retornarla y la guardamos en el nodo actual
+                MAX = actual.nodos[i].ganador;
+                actual.mejorMovimiento = actual.nodos[i].indice;
+
+                if (MAX == 1) {
                     break;
                 }
             }
         }
 
-        /*Borramos los nodos.*/
-        raiz.nodos = null;
-        return Max;
+        //borramos los nodos ya que no los vamos a utilizar más
+        actual.nodos = null;
+        return MAX;
     }
 
-    /*Método que calcula el MÍNIMO de los nodos hijos de MAX.*/
-    public int Min(Casilla raiz) {
-        int Min = 111;
+    //metodo para calcular el mínimo que recogen los nodo hijos del nodo padre
+    public int Min(Casilla actual) {
+        int MIN = 111;
 
-        /*Mínimo para el jugador*/
-        for (int i = 0; i < raiz.nodos.length; i++) {
-            if (raiz.nodos[i].ganador < Min) {
-                Min = raiz.nodos[i].ganador;
-                raiz.mejorMovimiento = raiz.nodos[i].indice;
-                if (Min == -1) {
+        //buscamos la puntuacion minima para el jugador 1
+        for (int i = 0; i < actual.nodos.length; i++) {
+            //vemos si empeora al minimo de la iteracion anterior
+            if (actual.nodos[i].ganador < MIN) {
+                //guardamos la peor casilla para retornarla y la guardamos en el nodo actual
+                MIN = actual.nodos[i].ganador;
+                actual.mejorMovimiento = actual.nodos[i].indice;
+                if (MIN == -1) {
                     break;
                 }
             }
         }
-        // Borra Los Nodos
-        raiz.nodos = null;
-        return Min;
+        //borramos los nodos ya que no los vamos a utilizar más
+        actual.nodos = null;
+        return MIN;
     }
 
-    /*Método que dice si el juego está terminado.*/
-    /*Regresa 0 si nadie gana, 1 si gana jugador 1 y 2 si gana jugador 2*/
+    //examina si el juego a terminado y puntua 0 si nadie ha ganado, 1 si gana el jugador en curso y 2 si gana el contrario (MAQUINA)
     public int terminado(int[] tablero) {
-        /*Comprobamos si el juego terminó.*/
-
-
 
         if (tablero[0] == tablero[1] && tablero[0] == tablero[2] && tablero[0] != 0) {
             return tablero[0];
@@ -226,25 +233,5 @@ public class IA {
         return 0;
     }
 
-//    /*Método si gana la computadora.*/
-//    public boolean puedoGanar(int[] tablero) {
-//        return terminado(tablero) == 2;
-//    }
-//
-//    /*Método pierde computadora.*/
-//    public boolean puedoPerder(int[] tablero) {
-//        return terminado(tablero) == 1;
-//    }
-//
-//    /*Mëtodo que imprime un vector como un Triqui. xD*/
-//    public void imprime(int[] triqui) {
-//        for (int i = 0; i < 9; i++) {
-//            System.out.print(triqui[i] + "");
-//            if (i == 2 || i == 5) {
-//                System.out.println();
-//            }
-//        }
-//
-//        System.out.println("\r\n");
-//    }
+
 }

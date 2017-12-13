@@ -15,7 +15,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/mnHome"
-        android:icon="@android:drawable/ic_media_rew"
+        android:icon="@android:drawable/ic_menu_revert"
         android:title="Home"
         app:showAsAction="always" />
 </menu>

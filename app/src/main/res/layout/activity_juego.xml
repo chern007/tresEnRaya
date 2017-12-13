@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wall_1"
     tools:context="com.example.carlos.tresenraya.juego">
 
     <Button
@@ -105,8 +106,9 @@
 
     <Button
         android:id="@+id/btReset"
-        android:layout_width="120dp"
-        android:layout_height="41dp"
+        android:background="@color/dialogoOK"
+        android:layout_width="299dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="17dp"
         android:onClick="reset"
