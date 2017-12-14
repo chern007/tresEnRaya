@@ -1,5 +1,6 @@
 package com.example.carlos.tresenraya;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,9 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    MenuItem botonHome;
+   static  boolean interruptorHOME = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.juego_menu, menu);
 
+        //captiramos el boton de home y lo apagamos
+
+        botonHome = (MenuItem) menu.findItem(R.id.mnHome);
+
+        //invalidateOptionsMenu();
+        if (interruptorHOME) {
+            botonHome.setVisible(true);
+        } else {
+            botonHome.setVisible(false);
+        }
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -34,27 +49,49 @@ public class MainActivity extends AppCompatActivity {
 
         int opcion = item.getItemId();
 
+
         if (opcion == R.id.mnInstrucciones) {
 
             Toast.makeText(getApplicationContext(), "¿Cómo se juega?", Toast.LENGTH_LONG).show();
             //startActivity(new Intent(this, instrucciones.class));
+
+            //activamos el boton de home
+            interruptorHOME = true;
+            invalidateOptionsMenu();
+
             openInstrucciones();
+
 
         } else if (opcion == R.id.mnConfigurar) {
 
             Toast.makeText(getApplicationContext(), "Configura tu partida.", Toast.LENGTH_LONG).show();
             //startActivity(new Intent(this, configuracion.class));
+
+            //activamos el boton de home
+            interruptorHOME = true;
+            invalidateOptionsMenu();
+
             openConfiguracion();
+
 
         } else if (opcion == R.id.mnHome) {
 
             Toast.makeText(getApplicationContext(), "Pantalla de inicio.", Toast.LENGTH_LONG).show();
+
+            //apagamos el boton de home
+            interruptorHOME = false;
+
             startActivity(new Intent(this, MainActivity.class));
 
         } else if (opcion == R.id.mnNuevo) {
 
             Toast.makeText(getApplicationContext(), "¡Vamos a jugar!", Toast.LENGTH_LONG).show();
+
             startActivity(new Intent(this, juego.class));
+
+            //activamos el boton de home
+            interruptorHOME = true;
+            invalidateOptionsMenu();
 
         }
 
@@ -94,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton opt2 = (RadioButton) dialogo2.findViewById(R.id.btDosJugadores);
 
                 //configuramos la variable para ver si jugamos en modo multijugador o contra la maquina
-                if (opt2.isChecked()){
+                if (opt2.isChecked()) {
                     logica_juego.multijuador = true;
-                }else {
+                } else {
                     logica_juego.multijuador = false;
                 }
 
@@ -105,9 +142,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
-
 
 
 }
