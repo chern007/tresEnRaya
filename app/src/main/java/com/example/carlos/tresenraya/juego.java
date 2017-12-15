@@ -539,8 +539,15 @@ public class juego extends MainActivity {
 
     private boolean compruebaGandor() {
 
-        if (logica_juego.hasGanado(logica_juego.tablero, logica_juego.turnoUsuario)) {
-            pantallaInfo.setText("¡¡¡EL JUGADOR " + logica_juego.turnoUsuario + " HA GANADO!!!");
+        boolean empate = false;
+
+        if (logica_juego.hasGanado(logica_juego.tablero, logica_juego.turnoUsuario) || (empate = logica_juego.hayEmpate(logica_juego.tablero))) {
+
+            if (empate){
+                pantallaInfo.setText("¡¡¡EMPATE. NINGÚN JUGADOR HA PODIDO GANAR!!!");
+            }else {
+                pantallaInfo.setText("¡¡¡EL JUGADOR " + logica_juego.turnoUsuario + " HA GANADO!!!");
+            }
 
             BT1.setEnabled(false);
             BT2.setEnabled(false);

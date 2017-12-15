@@ -1,10 +1,9 @@
 package com.example.carlos.tresenraya;
 
-import android.content.ClipData;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             //startActivity(new Intent(this, instrucciones.class));
 
             //activamos el boton de home
-            interruptorHOME = true;
+            interruptorHOME = false;
             invalidateOptionsMenu();
 
             openInstrucciones();
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             //startActivity(new Intent(this, configuracion.class));
 
             //activamos el boton de home
-            interruptorHOME = true;
+            interruptorHOME = false;
             invalidateOptionsMenu();
 
             openConfiguracion();
