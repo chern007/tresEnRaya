@@ -27,7 +27,6 @@ public class juego extends MainActivity {
 
     long TInicio, TFin, tiempo;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -498,7 +497,7 @@ public class juego extends MainActivity {
     //listener del boton resetear
     public void reset(View view) {
 
-        Toast.makeText(getApplicationContext(),"Juego reseteado.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Juego reseteado.", Toast.LENGTH_SHORT).show();
 
         //reseteamos el tablero
         logica_juego.tablero[0] = logica_juego.tablero[1] = logica_juego.tablero[2] = logica_juego.tablero[3] = logica_juego.tablero[4] = logica_juego.tablero[5] = logica_juego.tablero[6] = logica_juego.tablero[7] = logica_juego.tablero[8] = 0;
@@ -539,9 +538,9 @@ public class juego extends MainActivity {
 
     private boolean compruebaGandor() {
 
-        boolean empate = false;
+        boolean empate = logica_juego.hasEmpatado(logica_juego.tablero);
 
-        if (logica_juego.hasGanado(logica_juego.tablero, logica_juego.turnoUsuario) || (empate = logica_juego.hayEmpate(logica_juego.tablero))) {
+        if (logica_juego.hasGanado(logica_juego.tablero, logica_juego.turnoUsuario) || empate ) {
 
             if (empate){
                 pantallaInfo.setText("¡¡¡EMPATE. NINGÚN JUGADOR HA PODIDO GANAR!!!");
@@ -558,6 +557,8 @@ public class juego extends MainActivity {
             BT7.setEnabled(false);
             BT8.setEnabled(false);
             BT9.setEnabled(false);
+
+            logica_juego.alternaIA_Random=false;//reseteamos la variable de IA
 
             return true;
         } else {

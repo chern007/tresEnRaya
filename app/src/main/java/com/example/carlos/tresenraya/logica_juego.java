@@ -18,6 +18,8 @@ public class logica_juego extends Activity {
 
     public static boolean multijuador = false;
 
+   public static boolean alternaIA_Random;//true=> IA ; false=> Random
+
     //funcion que comprobara si ha ganado el ususario en curso
     public static boolean hasGanado(int[] tablero, int valorUsuario) {
 
@@ -55,7 +57,16 @@ public class logica_juego extends Activity {
     }
 
     //funcion que comprobará si ha ganado el ususario en curso
-    public static boolean hayEmpate(int[] tablero) {
+    public static boolean hasEmpatado(int[] tablero) {
+
+        //vemos si solo quedan dos casillas sin rellenar
+        int casillasLibres = 0;
+        for (int casilla : tablero) {
+            if (casilla == 0) {
+                casillasLibres++;
+            }
+        }
+
 
         List<int[]> combinacionesGanadoras = new ArrayList<int[]>();
 
@@ -77,14 +88,22 @@ public class logica_juego extends Activity {
         combinacionesGanadoras.add(combinacion7);
         combinacionesGanadoras.add(combinacion8);
 
-        List<Boolean> alertas = new ArrayList<Boolean>();
-        int numAlerta;
-        int total = 0;
+        List<Boolean> alertas = new ArrayList<>();
+
+
+        boolean combinacionDescartada;
+        boolean hayX;
+        boolean hayO;
+        int casillasMarcadas;
 
         for (int[] combi : combinacionesGanadoras) {
 
-            numAlerta = 0;
-            boolean combinacionDescartada = false;
+
+            combinacionDescartada = false;
+            hayX = false;
+            hayO = false;
+            casillasMarcadas=0;
+
 
             for (int i = 0; i < 3; i++) {
 
@@ -92,25 +111,44 @@ public class logica_juego extends Activity {
 
                 if (valor != 0) {
 
-                    total = combi[0] + combi[1] + combi[2];
+                    casillasMarcadas ++;//sumamos una casilla que esta marcada
 
-                    if (total > 2 && total % 2 != 0) {
-
-                        combinacionDescartada = true;
+                    if (valor == 1) {
+                        hayX = true;
+                    } else {
+                        hayO = true;
                     }
                 }
             }
+
+            //si en la combinacion ganadora se presentan los dos tipos de ficha, se descarta
+
+
+            if ((casillasLibres == 1 && casillasMarcadas==2 && hayO==false) || (casillasLibres == 1 && casillasMarcadas==2 && hayX==false)) {
+
+                combinacionDescartada = true;
+
+            } else if ((casillasLibres == 2 && casillasMarcadas==1)) {
+
+                combinacionDescartada = true;
+
+            } else if (hayX && hayO) {
+
+                combinacionDescartada = true;
+
+            }
+
             alertas.add(combinacionDescartada);
         }
 
-        boolean allEqual = false;
-        for (boolean a : alertas) {
-            if (!a == alertas.get(0) && a == true)
-            //if (!a == alertas.get(0) && a == true)
-                allEqual = true;
+
+        if (alertas.get(0) && alertas.get(1) && alertas.get(2) && alertas.get(3) && alertas.get(4) && alertas.get(5) && alertas.get(6) && alertas.get(7)) {
+            resetearTablero(tablero);
+            return true;
+        } else {
+            return false;
         }
 
-        return allEqual;
     }
 
     private static void resetearTablero(int[] tablero) {
@@ -121,16 +159,7 @@ public class logica_juego extends Activity {
     }
 
 
-    public static int movimientoMaquinaRandom() {
-        int casillaElegida;
 
-        do {
-            casillaElegida = new Random().nextInt(9);
-
-        } while (tablero[casillaElegida] == 1 || tablero[casillaElegida] == 2);
-
-        return casillaElegida;
-    }
 
 
 }

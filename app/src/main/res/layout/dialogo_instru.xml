@@ -13,18 +13,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_below="@id/dialog_info">
 
         <Button
             android:id="@+id/dialog_ok"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.50"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:background="@color/dialogoOK"
             android:text="OK" />
-
-
 
 
     </LinearLayout>

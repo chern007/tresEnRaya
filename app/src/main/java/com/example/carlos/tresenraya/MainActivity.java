@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (opcion == R.id.mnInstrucciones) {
 
-            Toast.makeText(getApplicationContext(), "¿Cómo se juega?", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "¿Cómo se juega?", Toast.LENGTH_SHORT).show();
             //startActivity(new Intent(this, instrucciones.class));
 
             //activamos el boton de home
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (opcion == R.id.mnConfigurar) {
 
-            Toast.makeText(getApplicationContext(), "Configura tu partida.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Configura tu partida.", Toast.LENGTH_SHORT).show();
             //startActivity(new Intent(this, configuracion.class));
 
             //activamos el boton de home
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (opcion == R.id.mnHome) {
 
-            Toast.makeText(getApplicationContext(), "Pantalla de inicio.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Pantalla de inicio.", Toast.LENGTH_SHORT).show();
 
             //apagamos el boton de home
             interruptorHOME = false;
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (opcion == R.id.mnNuevo) {
 
-            Toast.makeText(getApplicationContext(), "¡Vamos a jugar!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "¡Vamos a jugar!", Toast.LENGTH_SHORT).show();
 
             startActivity(new Intent(this, juego.class));
 

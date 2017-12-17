@@ -1,5 +1,7 @@
 package com.example.carlos.tresenraya;
 
+import java.util.Random;
+
 /**
  * Created by Carlos on 11/12/2017.
  */
@@ -81,20 +83,34 @@ public class IA {
 
     //METODO PRINCIPAL QUE NOS DEVOLVERA PA POSICION OPTIMA
     public int movimiento(int[] tablero) {
-        //asignamos el tablero
-        this.tablero = tablero;
-        tiradas++;
 
-        //asignamos los valores del indice de tablero del nodo INICIAL
-        for (int i = 0; i < 9; i++) {
-            this.arbol.tablero[i] = this.tablero[i];
+        if (logica_juego.alternaIA_Random) {
+
+
+            //asignamos el tablero
+            this.tablero = tablero;
+            tiradas++;
+
+            //asignamos los valores del indice de tablero del nodo INICIAL
+            for (int i = 0; i < 9; i++) {
+                this.arbol.tablero[i] = this.tablero[i];
+            }
+
+            //llamamos al metodo recursivo que calcula la mejor posicion
+            movComputadora(arbol);
+
+            //devolvemos la mejor posicion y alternamos antes el modo de IA
+            logica_juego.alternaIA_Random = false;//alternamos el modo IA
+            return arbol.mejorMovimiento;
+        }else{
+
+            logica_juego.alternaIA_Random = true;//alternamos el modo IA
+            int casilla = movimientoMaquinaRandom();
+
+            return casilla;
         }
 
-        //llamamos al metodo recursivo que calcula la mejor posicion
-        movComputadora(arbol);
 
-        //devolvemos la mejor posicion
-        return arbol.mejorMovimiento;
     }
 
     //metodo recursivo, generará tantos nodos hijo por cada nodo padre como movimientos disponibles haya
@@ -231,6 +247,17 @@ public class IA {
             return tablero[2];
         }
         return 0;
+    }
+
+    public int movimientoMaquinaRandom() {
+        int casillaElegida;
+
+        do {
+            casillaElegida = new Random().nextInt(9);
+
+        } while (logica_juego.tablero[casillaElegida] == 1 || logica_juego.tablero[casillaElegida] == 2);
+
+        return casillaElegida;
     }
 
 
